@@ -1,0 +1,19 @@
+//aggregate
+
+db.department.aggregate([{$group:{_id:"$byuser",total:{$sum:"$likes"}}}])  ///avg,min,max,push,addToSet
+
+
+//Map reduce
+
+var mapfunction=function(){emit(this.c_id,this.price)}
+var reducefunction=function(keyc_id,valuespricr){return Array.sum(valuesprice)}
+ db.order.mapReduce(mapfunction,reducefunction,{out:"result"})
+db.result.find()
+
+
+
+//indexing
+
+db.Department.createIndex({"likes":-1})
+db.Department.getIndexes() 
+db.Department.dropIndex()
